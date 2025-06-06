@@ -1,0 +1,268 @@
+# LLM Configuration for Lingjing Mystery Research System
+# 支持多个LLM提供商的配置
+
+# OpenAI Configuration
+openai:
+  api_key: ${OPENAI_API_KEY}
+  base_url: ${OPENAI_BASE_URL:https://api.openai.com/v1}
+  organization: ${OPENAI_ORG_ID:}
+  models:
+    basic: gpt-3.5-turbo
+    reasoning: gpt-4
+    vision: gpt-4-vision-preview
+    fast: gpt-3.5-turbo
+    embedding: text-embedding-ada-002
+    code: gpt-4
+    research: gpt-4-turbo
+    analysis: gpt-4-turbo
+  default_params:
+    temperature: 0.3
+    max_tokens: 4000
+    top_p: 1.0
+    frequency_penalty: 0.0
+    presence_penalty: 0.0
+
+# Anthropic Claude Configuration
+anthropic:
+  api_key: ${ANTHROPIC_API_KEY}
+  base_url: ${ANTHROPIC_BASE_URL:https://api.anthropic.com}
+  models:
+    basic: claude-3-haiku-20240307
+    reasoning: claude-3-opus-20240229
+    vision: claude-3-opus-20240229
+    fast: claude-3-haiku-20240307
+    embedding: # Anthropic doesn't provide embedding models
+    code: claude-3-sonnet-20240229
+    research: claude-3-opus-20240229
+    analysis: claude-3-sonnet-20240229
+  default_params:
+    temperature: 0.3
+    max_tokens: 4000
+    top_p: 1.0
+
+# Google Gemini Configuration
+google:
+  api_key: ${GOOGLE_API_KEY}
+  base_url: ${GOOGLE_BASE_URL:https://generativelanguage.googleapis.com/v1}
+  models:
+    basic: gemini-pro
+    reasoning: gemini-pro
+    vision: gemini-pro-vision
+    fast: gemini-pro
+    embedding: embedding-001
+    code: gemini-pro
+    research: gemini-pro
+    analysis: gemini-pro
+  default_params:
+    temperature: 0.3
+    max_output_tokens: 4000
+    top_p: 1.0
+    top_k: 40
+
+# Qwen Configuration (阿里云通义千问)
+qwen:
+  api_key: ${QWEN_API_KEY}
+  base_url: ${QWEN_BASE_URL:https://dashscope.aliyuncs.com/api/v1}
+  models:
+    basic: qwen-turbo
+    reasoning: qwen-max
+    vision: qwen-vl-plus
+    fast: qwen-turbo
+    embedding: text-embedding-v1
+    code: qwen-coder-turbo
+    research: qwen-max
+    analysis: qwen-plus
+  default_params:
+    temperature: 0.3
+    max_tokens: 4000
+    top_p: 1.0
+    repetition_penalty: 1.1
+
+# Ollama Configuration (本地部署)
+ollama:
+  base_url: ${OLLAMA_BASE_URL:http://localhost:11434}
+  models:
+    basic: llama2:7b
+    reasoning: llama2:13b
+    vision: llava:7b
+    fast: llama2:7b
+    embedding: nomic-embed-text
+    code: codellama:7b
+    research: llama2:13b
+    analysis: llama2:13b
+  default_params:
+    temperature: 0.3
+    num_predict: 4000
+    top_p: 1.0
+    repeat_penalty: 1.1
+
+# Zhipu AI Configuration (智谱AI)
+zhipu:
+  api_key: ${ZHIPU_API_KEY}
+  base_url: ${ZHIPU_BASE_URL:https://open.bigmodel.cn/api/paas/v4}
+  models:
+    basic: glm-3-turbo
+    reasoning: glm-4
+    vision: glm-4v
+    fast: glm-3-turbo
+    embedding: embedding-2
+    code: codegeex2-6b
+    research: glm-4
+    analysis: glm-4
+  default_params:
+    temperature: 0.3
+    max_tokens: 4000
+    top_p: 1.0
+
+# Baidu ERNIE Configuration (百度文心一言)
+baidu:
+  api_key: ${BAIDU_API_KEY}
+  secret_key: ${BAIDU_SECRET_KEY}
+  base_url: ${BAIDU_BASE_URL:https://aip.baidubce.com}
+  models:
+    basic: ernie-bot-turbo
+    reasoning: ernie-bot-4
+    vision: ernie-bot-4
+    fast: ernie-bot-turbo
+    embedding: embedding-v1
+    code: ernie-bot-4
+    research: ernie-bot-4
+    analysis: ernie-bot-4
+  default_params:
+    temperature: 0.3
+    max_output_tokens: 4000
+    top_p: 1.0
+
+# Default provider priority (按优先级排序)
+default_providers:
+  - openai
+  - anthropic
+  - qwen
+  - google
+  - zhipu
+  - baidu
+  - ollama
+
+# LLM type to provider mapping (可以为不同类型指定不同的提供商)
+type_provider_mapping:
+  basic:
+    - openai
+    - qwen
+    - ollama
+  reasoning:
+    - anthropic
+    - openai
+    - qwen
+  vision:
+    - openai
+    - google
+    - qwen
+  fast:
+    - openai
+    - qwen
+    - ollama
+  embedding:
+    - openai
+    - qwen
+    - google
+  code:
+    - openai
+    - anthropic
+    - qwen
+  research:
+    - anthropic
+    - openai
+    - qwen
+  analysis:
+    - anthropic
+    - openai
+    - qwen
+
+# Fallback configuration
+fallback:
+  enabled: true
+  max_retries: 3
+  retry_delay: 1.0
+  timeout: 30.0
+
+# Rate limiting
+rate_limiting:
+  enabled: true
+  requests_per_minute: 60
+  tokens_per_minute: 100000
+  burst_size: 10
+
+# Caching
+caching:
+  enabled: true
+  ttl: 3600  # 1 hour
+  max_size: 1000
+  backend: memory  # memory, redis, file
+
+# Monitoring
+monitoring:
+  enabled: true
+  log_requests: true
+  log_responses: false
+  track_usage: true
+  track_costs: true
+
+# Cost tracking (USD per 1K tokens)
+cost_tracking:
+  openai:
+    gpt-3.5-turbo:
+      input: 0.0015
+      output: 0.002
+    gpt-4:
+      input: 0.03
+      output: 0.06
+    gpt-4-turbo:
+      input: 0.01
+      output: 0.03
+  anthropic:
+    claude-3-haiku-20240307:
+      input: 0.00025
+      output: 0.00125
+    claude-3-sonnet-20240229:
+      input: 0.003
+      output: 0.015
+    claude-3-opus-20240229:
+      input: 0.015
+      output: 0.075
+  qwen:
+    qwen-turbo:
+      input: 0.0008
+      output: 0.002
+    qwen-plus:
+      input: 0.004
+      output: 0.012
+    qwen-max:
+      input: 0.02
+      output: 0.06
+
+# Environment-specific overrides
+environments:
+  development:
+    default_providers:
+      - ollama
+      - qwen
+    rate_limiting:
+      requests_per_minute: 30
+  
+  testing:
+    default_providers:
+      - ollama
+    caching:
+      enabled: false
+    monitoring:
+      log_requests: false
+  
+  production:
+    default_providers:
+      - openai
+      - anthropic
+      - qwen
+    rate_limiting:
+      requests_per_minute: 100
+    monitoring:
+      log_responses: true

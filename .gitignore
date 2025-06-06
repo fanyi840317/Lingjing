@@ -1,0 +1,537 @@
+# =============================================================================
+# 神秘事件研究系统 - Git忽略文件
+# Mystery Event Research System - Git Ignore File
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# 环境配置和密钥文件 (Environment and Secret Files)
+# -----------------------------------------------------------------------------
+.env
+.env.local
+.env.production
+.env.staging
+.env.development
+*.key
+*.pem
+*.p12
+*.pfx
+config/secrets.yaml
+config/local.yaml
+secrets/
+
+# -----------------------------------------------------------------------------
+# Python相关 (Python Related)
+# -----------------------------------------------------------------------------
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# -----------------------------------------------------------------------------
+# 数据文件和缓存 (Data Files and Cache)
+# -----------------------------------------------------------------------------
+
+# 数据存储目录
+data/
+cache/
+temp/
+tmp/
+output/
+results/
+reports/
+exports/
+downloads/
+uploads/
+
+# 日志文件
+logs/
+*.log
+*.log.*
+
+# 数据库文件
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# 备份文件
+*.bak
+*.backup
+*.old
+*.orig
+
+# 压缩文件
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# CSV和数据文件
+*.csv
+*.tsv
+*.json.bak
+*.xml.bak
+
+# 图像和媒体文件 (如果是临时生成的)
+temp_images/
+temp_videos/
+temp_audio/
+
+# -----------------------------------------------------------------------------
+# 爬虫相关 (Crawler Related)
+# -----------------------------------------------------------------------------
+
+# Selenium WebDriver
+chromedriver
+chromedriver.exe
+geckodriver
+geckodriver.exe
+msedgedriver
+msedgedriver.exe
+
+# 浏览器用户数据
+user_data/
+browser_cache/
+cookies/
+sessions/
+
+# 下载的网页内容
+html_cache/
+page_cache/
+webpage_snapshots/
+
+# 爬虫状态文件
+crawl_state.json
+crawl_progress.json
+visited_urls.txt
+failed_urls.txt
+
+# -----------------------------------------------------------------------------
+# AI和机器学习 (AI and Machine Learning)
+# -----------------------------------------------------------------------------
+
+# 模型文件
+models/
+*.model
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.pb
+*.onnx
+*.pt
+*.pth
+*.safetensors
+
+# 向量数据库
+vector_db/
+chroma_db/
+faiss_index/
+embeddings/
+
+# 训练数据和结果
+training_data/
+validation_data/
+test_data/
+checkpoints/
+runs/
+tensorboard_logs/
+
+# Hugging Face缓存
+.cache/
+transformers_cache/
+
+# -----------------------------------------------------------------------------
+# 数据库相关 (Database Related)
+# -----------------------------------------------------------------------------
+
+# Neo4j
+neo4j_data/
+neo4j_logs/
+neo4j_import/
+*.neo4j
+
+# Elasticsearch
+elasticsearch_data/
+elasticsearch_logs/
+
+# PostgreSQL
+postgresql_data/
+*.sql.bak
+
+# MongoDB
+mongodb_data/
+*.bson
+
+# Redis
+redis_data/
+*.rdb
+*.aof
+
+# -----------------------------------------------------------------------------
+# 开发工具 (Development Tools)
+# -----------------------------------------------------------------------------
+
+# IDE配置
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 编辑器临时文件
+.DS_Store
+Thumbs.db
+
+# 调试文件
+*.dmp
+*.stackdump
+core
+
+# 性能分析
+*.prof
+*.profile
+
+# -----------------------------------------------------------------------------
+# 文档和报告 (Documentation and Reports)
+# -----------------------------------------------------------------------------
+
+# 生成的文档
+docs/build/
+docs/_build/
+site/
+
+# 报告文件
+*.pdf
+*.docx
+*.xlsx
+*.pptx
+
+# 图表和可视化
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.html
+
+# 除非是重要的静态资源
+!static/images/
+!assets/images/
+!docs/images/
+
+# -----------------------------------------------------------------------------
+# 测试相关 (Testing Related)
+# -----------------------------------------------------------------------------
+
+# 测试结果
+test_results/
+test_reports/
+test_output/
+
+# 测试数据
+test_data/
+mock_data/
+fixtures/
+
+# 覆盖率报告
+htmlcov/
+.coverage
+coverage.xml
+
+# -----------------------------------------------------------------------------
+# 部署和运维 (Deployment and Operations)
+# -----------------------------------------------------------------------------
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Kubernetes
+*.kubeconfig
+
+# 监控和指标
+metrics/
+monitoring/
+
+# 部署脚本生成的文件
+deploy/
+build/
+dist/
+
+# -----------------------------------------------------------------------------
+# 操作系统相关 (Operating System)
+# -----------------------------------------------------------------------------
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# -----------------------------------------------------------------------------
+# 网络和安全 (Network and Security)
+# -----------------------------------------------------------------------------
+
+# SSL证书
+*.crt
+*.csr
+*.key
+*.pem
+*.p12
+*.pfx
+
+# SSH密钥
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+.ssh/
+
+# GPG密钥
+*.gpg
+*.asc
+
+# -----------------------------------------------------------------------------
+# 临时和系统文件 (Temporary and System Files)
+# -----------------------------------------------------------------------------
+
+# 临时文件
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.old
+
+# 系统文件
+.DS_Store
+Thumbs.db
+*.lnk
+
+# 锁文件
+*.lock
+.lock
+package-lock.json
+yarn.lock
+
+# PID文件
+*.pid
+
+# -----------------------------------------------------------------------------
+# 项目特定忽略 (Project Specific Ignores)
+# -----------------------------------------------------------------------------
+
+# 神秘事件研究系统特定文件
+mystery_events_db/
+credibility_cache/
+correlation_results/
+graph_exports/
+research_reports/
+crawled_content/
+analysis_cache/
+
+# 配置文件备份
+config/*.bak
+config/*.old
+
+# 用户生成的查询和结果
+user_queries/
+user_reports/
+custom_searches/
+
+# 实验和测试数据
+experiments/
+prototypes/
+sandbox/
+
+# 第三方工具生成的文件
+.langgraph/
+.langchain/
+.openai/
+
+# -----------------------------------------------------------------------------
+# 注释说明 (Comments)
+# -----------------------------------------------------------------------------
+#
+# 此.gitignore文件旨在保护敏感信息和避免提交不必要的文件
+# 主要保护内容：
+# 1. API密钥和配置文件
+# 2. 数据库文件和缓存
+# 3. 生成的报告和分析结果
+# 4. 临时文件和系统文件
+# 5. 开发工具配置
+# 6. 大型数据文件和模型文件
+#
+# 如需添加特定文件到版本控制，可以使用：
+# git add -f <filename>
+#
+# 如需忽略已跟踪的文件，可以使用：
+# git rm --cached <filename>
+# 然后将文件名添加到此.gitignore文件中
+#
+# =============================================================================

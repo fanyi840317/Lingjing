@@ -1,0 +1,500 @@
+# =============================================================================
+# 神秘事件研究系统 - 默认配置文件
+# Mystery Event Research System - Default Configuration
+# =============================================================================
+
+# 系统基本配置
+system:
+  name: "神秘事件研究系统"
+  version: "0.1.0"
+  description: "基于AI的综合性神秘现象研究平台"
+  locale: "zh-CN"
+  timezone: "Asia/Shanghai"
+  debug: false
+  verbose: false
+
+# AI模型配置
+ai:
+  # 默认模型提供商
+  default_provider: "openai"
+  
+  # OpenAI配置
+  openai:
+    model: "gpt-4-turbo-preview"
+    temperature: 0.7
+    max_tokens: 4000
+    top_p: 1.0
+    frequency_penalty: 0.0
+    presence_penalty: 0.0
+    timeout: 60
+    max_retries: 3
+  
+  # 其他AI提供商配置
+  anthropic:
+    model: "claude-3-sonnet-20240229"
+    temperature: 0.7
+    max_tokens: 4000
+  
+  google:
+    model: "gemini-pro"
+    temperature: 0.7
+    max_tokens: 4000
+
+# 搜索引擎配置
+search:
+  # 默认搜索引擎
+  default_engine: "tavily"
+  
+  # 搜索参数
+  max_results: 10
+  timeout: 30
+  retry_attempts: 3
+  
+  # Tavily配置
+  tavily:
+    search_depth: "advanced"
+    include_answer: true
+    include_raw_content: false
+    max_results: 10
+  
+  # Google搜索配置
+  google:
+    safe_search: "moderate"
+    language: "zh-CN"
+    country: "CN"
+  
+  # DuckDuckGo配置
+  duckduckgo:
+    region: "cn-zh"
+    safe_search: "moderate"
+    time_range: "y"  # 过去一年
+
+# 数据库配置
+database:
+  # Neo4j图数据库
+  neo4j:
+    uri: "bolt://localhost:7687"
+    database: "neo4j"
+    max_connection_lifetime: 3600
+    max_connection_pool_size: 50
+    connection_timeout: 30
+    
+  # Elasticsearch
+  elasticsearch:
+    hosts: ["http://localhost:9200"]
+    timeout: 30
+    max_retries: 3
+    retry_on_timeout: true
+    
+    # 索引配置
+    indices:
+      mystery_events: "mystery_events"
+      academic_sources: "academic_sources"
+      news_articles: "news_articles"
+      forum_posts: "forum_posts"
+      documentaries: "documentaries"
+  
+  # PostgreSQL配置（可选）
+  postgresql:
+    host: "localhost"
+    port: 5432
+    database: "mystery_research"
+    pool_size: 10
+    max_overflow: 20
+    pool_timeout: 30
+
+# 爬虫配置
+crawler:
+  # 通用设置
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  request_delay: 1.0
+  random_delay_range: 0.5
+  max_concurrent_requests: 5
+  max_retries: 3
+  timeout: 30
+  
+  # 页面限制
+  max_pages_per_site: 50
+  max_crawl_depth: 3
+  max_content_length: 1048576  # 1MB
+  
+  # Selenium配置
+  selenium:
+    headless: true
+    window_size: [1920, 1080]
+    page_load_timeout: 30
+    implicit_wait: 10
+    
+  # 内容过滤
+  content_filter:
+    min_text_length: 50
+    max_text_length: 100000
+    allowed_languages: ["zh", "en", "ja", "ko"]
+    blocked_domains: []
+    
+  # 专业爬虫配置
+  specialized:
+    news:
+      max_articles_per_site: 20
+      date_range_days: 30
+      credibility_threshold: 0.3
+    
+    forum:
+      max_threads_per_forum: 50
+      max_posts_per_thread: 100
+      min_post_length: 20
+    
+    documentary:
+      max_videos_per_channel: 10
+      min_duration_minutes: 5
+      max_duration_minutes: 180
+
+# 分析配置
+analysis:
+  # 可信度分析
+  credibility:
+    # 权重配置
+    weights:
+      source_reputation: 0.3
+      content_quality: 0.25
+      evidence_strength: 0.2
+      witness_credibility: 0.15
+      consistency: 0.1
+    
+    # 阈值设置
+    thresholds:
+      minimum: 0.3
+      good: 0.6
+      excellent: 0.8
+  
+  # 关联分析
+  correlation:
+    # 地理相关性
+    location:
+      max_distance_km: 100
+      weight: 0.4
+    
+    # 时间相关性
+    temporal:
+      max_time_difference_days: 30
+      weight: 0.3
+    
+    # 内容相关性
+    content:
+      similarity_threshold: 0.7
+      weight: 0.3
+    
+    # 最小关联分数
+    min_correlation_score: 0.5
+  
+  # 时间线分析
+  timeline:
+    time_window_days: 365
+    cluster_threshold: 0.6
+    min_events_per_cluster: 3
+  
+  # 自然语言处理
+  nlp:
+    language_detection_threshold: 0.8
+    sentiment_analysis: true
+    entity_extraction: true
+    topic_modeling: true
+    
+    # 实体识别
+    entities:
+      - PERSON
+      - LOCATION
+      - ORGANIZATION
+      - DATE
+      - TIME
+      - MISC
+
+# 工作流配置
+workflow:
+  # 执行限制
+  max_plan_iterations: 3
+  max_step_num: 8
+  max_execution_time_minutes: 60
+  
+  # 功能开关
+  features:
+    background_investigation: true
+    academic_search: true
+    credibility_filter: true
+    correlation_analysis: true
+    graph_storage: true
+    timeline_analysis: true
+    location_analysis: true
+  
+  # 代理配置
+  agents:
+    coordinator:
+      max_retries: 3
+      timeout: 30
+    
+    planner:
+      max_plan_steps: 10
+      planning_timeout: 60
+    
+    researcher:
+      max_search_results: 20
+      research_timeout: 120
+    
+    analyzer:
+      analysis_timeout: 180
+      batch_size: 50
+    
+    reporter:
+      report_timeout: 60
+      max_report_length: 50000
+
+# 存储配置
+storage:
+  # 数据目录
+  data_dir: "./data"
+  cache_dir: "./cache"
+  temp_dir: "./temp"
+  output_dir: "./output"
+  logs_dir: "./logs"
+  
+  # 缓存配置
+  cache:
+    enabled: true
+    expiry_hours: 24
+    max_size_mb: 1000
+    cleanup_interval_hours: 6
+  
+  # 文件格式
+  formats:
+    reports: ["markdown", "pdf", "json"]
+    data_export: ["json", "csv", "xlsx"]
+    graphs: ["gexf", "graphml", "json"]
+
+# 日志配置
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  # 文件日志
+  file:
+    enabled: true
+    filename: "mystery_research.log"
+    max_size_mb: 10
+    backup_count: 5
+    rotation: "time"
+  
+  # 控制台日志
+  console:
+    enabled: true
+    colored: true
+  
+  # 特定模块日志级别
+  loggers:
+    crawler: "INFO"
+    analyzer: "INFO"
+    database: "WARNING"
+    ai: "INFO"
+
+# 性能配置
+performance:
+  # 内存限制
+  max_memory_mb: 2048
+  memory_check_interval: 60
+  
+  # 并发控制
+  max_concurrent_tasks: 10
+  task_timeout: 300
+  
+  # 批处理
+  batch_size: 100
+  batch_timeout: 600
+  
+  # 连接池
+  connection_pools:
+    http: 10
+    database: 20
+
+# 安全配置
+security:
+  # API限制
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 60
+    requests_per_hour: 1000
+    requests_per_day: 10000
+  
+  # 内容过滤
+  content_filtering:
+    enabled: true
+    blocked_keywords: []
+    allowed_file_types: ["txt", "pdf", "doc", "docx", "html", "json", "csv"]
+    max_file_size_mb: 100
+  
+  # 数据加密
+  encryption:
+    enabled: false
+    algorithm: "AES-256-GCM"
+  
+  # 访问控制
+  access_control:
+    enabled: false
+    session_timeout_minutes: 60
+
+# 神秘事件类型配置
+mystery_types:
+  ufo:
+    name: "UFO目击事件"
+    keywords: ["UFO", "飞碟", "不明飞行物", "外星人", "alien", "saucer"]
+    credibility_factors: ["多个证人", "雷达数据", "照片证据", "官方报告"]
+  
+  cryptid:
+    name: "神秘生物目击"
+    keywords: ["大脚怪", "雪人", "尼斯湖水怪", "bigfoot", "yeti", "cryptid"]
+    credibility_factors: ["足迹证据", "毛发样本", "视频记录", "多次目击"]
+  
+  paranormal:
+    name: "超自然现象"
+    keywords: ["鬼魂", "闹鬼", "超自然", "ghost", "haunted", "paranormal"]
+    credibility_factors: ["环境监测", "电磁异常", "温度变化", "多人体验"]
+  
+  ancient_mystery:
+    name: "古代未解之谜"
+    keywords: ["金字塔", "巨石阵", "古代文明", "pyramid", "stonehenge", "ancient"]
+    credibility_factors: ["考古证据", "科学分析", "历史记录", "专家研究"]
+  
+  disappearance:
+    name: "神秘失踪案例"
+    keywords: ["失踪", "百慕大", "消失", "disappearance", "bermuda", "vanished"]
+    credibility_factors: ["官方记录", "搜救报告", "最后联系", "环境因素"]
+  
+  natural_anomaly:
+    name: "自然异常现象"
+    keywords: ["球状闪电", "地磁异常", "极光", "ball lightning", "aurora", "anomaly"]
+    credibility_factors: ["科学仪器", "气象数据", "地质记录", "专业观测"]
+
+# 报告模板配置
+report_templates:
+  default:
+    sections:
+      - "executive_summary"
+      - "methodology"
+      - "findings"
+      - "credibility_analysis"
+      - "correlation_analysis"
+      - "academic_sources"
+      - "processing_observations"
+      - "conclusions"
+      - "recommendations"
+    
+    formatting:
+      title_level: 1
+      section_level: 2
+      subsection_level: 3
+      include_toc: true
+      include_charts: true
+      include_maps: true
+  
+  academic:
+    sections:
+      - "abstract"
+      - "introduction"
+      - "literature_review"
+      - "methodology"
+      - "results"
+      - "discussion"
+      - "conclusion"
+      - "references"
+    
+    formatting:
+      citation_style: "APA"
+      include_bibliography: true
+      academic_tone: true
+
+# 国际化配置
+i18n:
+  default_language: "zh-CN"
+  supported_languages:
+    - "zh-CN"
+    - "en-US"
+    - "ja-JP"
+    - "ko-KR"
+  
+  fallback_language: "en-US"
+  
+  # 日期时间格式
+  datetime_formats:
+    "zh-CN": "%Y年%m月%d日 %H:%M:%S"
+    "en-US": "%B %d, %Y %I:%M:%S %p"
+    "ja-JP": "%Y年%m月%d日 %H時%M分%S秒"
+    "ko-KR": "%Y년 %m월 %d일 %H시 %M분 %S초"
+
+# 通知配置
+notifications:
+  enabled: false
+  
+  # 邮件通知
+  email:
+    enabled: false
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+    use_tls: true
+  
+  # Slack通知
+  slack:
+    enabled: false
+    channel: "#mystery-research"
+  
+  # Discord通知
+  discord:
+    enabled: false
+
+# 监控配置
+monitoring:
+  enabled: false
+  
+  # 性能监控
+  performance:
+    enabled: false
+    collection_interval: 60
+    metrics:
+      - "cpu_usage"
+      - "memory_usage"
+      - "disk_usage"
+      - "network_io"
+  
+  # 健康检查
+  health_check:
+    enabled: false
+    interval: 300
+    endpoints:
+      - "database"
+      - "search_engine"
+      - "ai_service"
+
+# 开发配置
+development:
+  debug_mode: false
+  test_mode: false
+  mock_external_apis: false
+  
+  # 测试数据
+  test_data:
+    enabled: false
+    sample_size: 100
+    mock_responses: true
+  
+  # 性能分析
+  profiling:
+    enabled: false
+    output_dir: "./profiling"
+    
+# 实验性功能
+experimental:
+  enabled: false
+  
+  features:
+    advanced_nlp: false
+    image_analysis: false
+    video_analysis: false
+    real_time_processing: false
+    machine_learning: false
