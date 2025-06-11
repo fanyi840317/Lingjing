@@ -46,8 +46,8 @@ class GraphData:
 
 class Neo4jStorage(BaseTool):
     """Neo4j图数据库存储工具"""
-    name = "neo4j_storage"
-    description = "Store and query data in Neo4j graph database."
+    name: str = "neo4j_storage"
+    description: str = "Store and query data in Neo4j graph database."
     
     def __init__(self, config: Optional[MysteryEventConfig] = None):
         """初始化Neo4j存储
@@ -260,8 +260,8 @@ class Neo4jStorage(BaseTool):
 
 class ElasticsearchStorage(BaseTool):
     """Elasticsearch存储工具"""
-    name = "elasticsearch_storage"
-    description = "Store and search data in Elasticsearch."
+    name: str = "elasticsearch_storage"
+    description: str = "Store and search data in Elasticsearch."
     
     def __init__(self, config: Optional[MysteryEventConfig] = None):
         """初始化Elasticsearch存储

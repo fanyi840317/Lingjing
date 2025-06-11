@@ -40,22 +40,22 @@ class MysteryResearchDemo:
             {
                 "title": "不明飞行物目击报告",
                 "query": "收集和分析最近的UFO目击报告，特别关注多目击者事件和雷达确认案例",
-                "expected_types": [MysteryEventType.UFO_SIGHTING]
+                "expected_types": [MysteryEventType.UFO]
             },
             {
                 "title": "古代文明未解之谜",
                 "query": "探索古代文明的建筑技术谜团，如金字塔建造方法和巨石阵的用途",
-                "expected_types": [MysteryEventType.ANCIENT_MYSTERY, MysteryEventType.ARCHAEOLOGICAL]
+                "expected_types": [MysteryEventType.ANCIENT_MYSTERY]
             },
             {
                 "title": "超自然现象调查",
                 "query": "调查有记录的超自然现象，包括鬼魂目击、灵异事件和无法解释的现象",
-                "expected_types": [MysteryEventType.PARANORMAL, MysteryEventType.SUPERNATURAL]
+                "expected_types": [MysteryEventType.PARANORMAL]
             },
             {
                 "title": "密码学历史谜题",
                 "query": "研究历史上著名的未破解密码和神秘文字，如伏尼契手稿和线性文字A",
-                "expected_types": [MysteryEventType.CRYPTOGRAPHIC, MysteryEventType.HISTORICAL]
+                "expected_types": [MysteryEventType.ANCIENT_MYSTERY]
             }
         ]
     

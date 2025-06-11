@@ -29,8 +29,8 @@ LoggedArxivSearch = create_logged_tool(ArxivQueryRun)
 
 class AcademicSearch(BaseTool):
     """Tool for searching academic databases for mystery research."""
-    name = "academic_search"
-    description = "Search academic databases for scholarly articles and papers related to mysterious events."
+    name: str = "academic_search"
+    description: str = "Search academic databases for scholarly articles and papers related to mysterious events."
     
     def __init__(self, max_results: int = 5, databases: List[str] = None):
         """Initialize the academic search tool.
@@ -140,8 +140,8 @@ class AcademicSearch(BaseTool):
 
 class MysterySearch(BaseTool):
     """Tool for searching mystery-specific sources and databases."""
-    name = "mystery_search"
-    description = "Search for information about mysterious events from specialized sources."
+    name: str = "mystery_search"
+    description: str = "Search for information about mysterious events from specialized sources."
     
     def __init__(self, max_results: int = 5, event_types: List[str] = None):
         """Initialize the mystery search tool.

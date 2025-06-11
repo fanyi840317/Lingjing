@@ -42,8 +42,8 @@ class TTSResult:
 
 class TextToSpeechEngine(BaseTool):
     """文本转语音引擎"""
-    name = "text_to_speech_engine"
-    description = "Convert text to speech for mysterious event research reports."
+    name: str = "text_to_speech_engine"
+    description: str = "Convert text to speech for mysterious event research reports."
     
     def __init__(self, config: Optional[TTSConfig] = None):
         """初始化TTS引擎

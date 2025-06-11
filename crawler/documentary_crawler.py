@@ -7,7 +7,7 @@ from typing import List, Dict, Any, Optional
 from datetime import datetime
 from urllib.parse import urljoin, urlparse
 
-from .crawler import Crawler
+from crawler.crawler import Crawler
 from rag import Document, MysteryEvent
 from config.mystery_config import MysteryEventType, DataSourceType
 

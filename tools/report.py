@@ -42,8 +42,8 @@ class ReportMetadata:
 
 class ReportGenerator(BaseTool):
     """报告生成器"""
-    name = "report_generator"
-    description = "Generate comprehensive reports for mysterious event research."
+    name: str = "report_generator"
+    description: str = "Generate comprehensive reports for mysterious event research."
     
     def __init__(self, config: Optional[MysteryEventConfig] = None):
         """初始化报告生成器

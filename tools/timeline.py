@@ -60,8 +60,8 @@ class TimePeriod:
 
 class TimelineAnalyzer(BaseTool):
     """时间线分析工具"""
-    name = "timeline_analyzer"
-    description = "Analyze temporal patterns and trends in mysterious events."
+    name: str = "timeline_analyzer"
+    description: str = "Analyze temporal patterns and trends in mysterious events."
     
     def __init__(self, config: Optional[MysteryEventConfig] = None):
         """初始化时间线分析器

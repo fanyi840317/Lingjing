@@ -1,0 +1,7 @@
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting neo4j
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/6a/57/94225fe5e9dabdc0ff60c88cbfcedf11277f4b34e7ab1373d3e62dbdd207/neo4j-5.28.1-py3-none-any.whl (312 kB)
+     ------------------------------------ 312.3/312.3 kB 495.9 kB/s eta 0:00:00
+Requirement already satisfied: pytz in d:\software\anaconda3\envs\vasa\lib\site-packages (from neo4j) (2024.1)
+Installing collected packages: neo4j
+Successfully installed neo4j-5.28.1

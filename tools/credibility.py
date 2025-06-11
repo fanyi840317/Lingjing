@@ -32,8 +32,8 @@ class CredibilityScore:
 
 class CredibilityAnalyzer(BaseTool):
     """信息可信度分析工具"""
-    name = "credibility_analyzer"
-    description = "Analyze the credibility of mystery event information based on multiple criteria."
+    name: str = "credibility_analyzer"
+    description: str = "Analyze the credibility of mystery event information based on multiple criteria."
     
     def __init__(self, config: Optional[MysteryEventConfig] = None):
         """初始化可信度分析器

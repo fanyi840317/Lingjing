@@ -59,8 +59,8 @@ class LocationPattern:
 
 class LocationAnalyzer(BaseTool):
     """地理位置分析工具"""
-    name = "location_analyzer"
-    description = "Analyze geographical patterns and distributions of mysterious events."
+    name: str = "location_analyzer"
+    description: str = "Analyze geographical patterns and distributions of mysterious events."
     
     def __init__(self, config: Optional[MysteryEventConfig] = None):
         """初始化地理位置分析器

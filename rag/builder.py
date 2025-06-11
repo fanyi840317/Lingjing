@@ -1,7 +1,7 @@
 # Copyright (c) 2025 Lingjing Project
 # SPDX-License-Identifier: MIT
 
-from ..config.tools import SELECTED_RAG_PROVIDER, RAGProvider
+from config.tools import SELECTED_RAG_PROVIDER, RAGProvider
 from .ragflow import RAGFlowRetriever
 from .neo4j_retriever import Neo4jRetriever
 from .retriever import Retriever

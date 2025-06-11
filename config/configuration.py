@@ -10,7 +10,7 @@ from pathlib import Path
 from langchain_core.runnables import RunnableConfig
 
 from rag.retriever import Resource
-from .mystery_config import MysteryEventConfig
+from config.mystery_config import MysteryEventConfig
 
 
 @dataclass(kw_only=True)
@@ -62,7 +62,7 @@ class Configuration:
     def get_mystery_keywords(self, event_type: str = None) -> list[str]:
         """获取神秘事件关键词"""
         if event_type:
-            from .mystery_config import MysteryEventType
+            from config.mystery_config import MysteryEventType
             try:
                 event_enum = MysteryEventType(event_type)
                 return self.mystery_config.get_keywords_by_type(event_enum)

@@ -5,7 +5,7 @@ import re
 from datetime import datetime
 from typing import Optional, Dict, Any
 from readabilipy import simple_json_from_html_string
-from .article import Article
+from crawler.article import Article
 
 
 class ReadabilityExtractor:

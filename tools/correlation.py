@@ -56,8 +56,8 @@ class MysteryEvent:
 
 class CorrelationAnalyzer(BaseTool):
     """关联分析工具"""
-    name = "correlation_analyzer"
-    description = "Analyze correlations between mysterious events based on multiple factors."
+    name: str = "correlation_analyzer"
+    description: str = "Analyze correlations between mysterious events based on multiple factors."
     
     def __init__(self, config: Optional[MysteryEventConfig] = None):
         """初始化关联分析器

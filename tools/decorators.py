@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
+# Copyright (c) 2024 Lingjing
 # SPDX-License-Identifier: MIT
 
 import json
 import logging
 import time
 import functools
-from typing import Any, Callable, Dict, Optional
+from typing import Any, Callable, Dict, Optional, Type
 from datetime import datetime
 
 logger = logging.getLogger(__name__)
@@ -67,6 +68,36 @@ def log_io(func: Callable) -> Callable:
             return json.dumps(error_result, ensure_ascii=False)
     
     return wrapper
+
+
+def create_logged_tool(tool_class: Type) -> Callable:
+    """创建带有日志记录功能的工具实例工厂函数
+    
+    Args:
+        tool_class: 要包装的工具类
+        
+    Returns:
+        工具实例工厂函数
+    """
+    def create_instance(*args, **kwargs):
+        """创建带有日志记录的工具实例"""
+        # 创建原始工具实例
+        instance = tool_class(*args, **kwargs)
+        
+        # 包装_run方法
+        original_run = instance._run
+        instance._run = log_io(original_run)
+        
+        # 包装_arun方法（如果存在）
+        if hasattr(instance, '_arun'):
+            original_arun = instance._arun
+            async def logged_arun(*args, **kwargs):
+                return await log_io(original_arun)(*args, **kwargs)
+            instance._arun = logged_arun
+        
+        return instance
+    
+    return create_instance
 
 
 def performance_monitor(threshold_seconds: float = 1.0):

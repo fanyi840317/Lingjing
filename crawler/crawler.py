@@ -11,8 +11,8 @@ from urllib.parse import urljoin, urlparse
 import aiohttp
 from bs4 import BeautifulSoup
 
-from ..rag.retriever import Document, MysteryEvent
-from ..config.mystery_config import DataSourceConfig, DataSourceType
+from rag.retriever import Document, MysteryEvent
+from config.mystery_config import DataSourceConfig, DataSourceType
 
 
 class Crawler(abc.ABC):
