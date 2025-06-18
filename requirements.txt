@@ -1,5 +1,6 @@
-# Core Framework
-langchain-core>=0.1.0
+# Core Framework - Updated for compatibility
+langchain-core>=0.3.0
+langchain>=0.3.0
 langgraph>=0.0.40
 
 # LLM Providers
@@ -21,7 +22,8 @@ qianfan>=0.4.0
 # Local AI Models
 ollama>=0.2.0
 transformers>=4.40.0
-torch>=2.3.0
+torch>=2.1.0
+torchvision>=0.16.0
 sentence-transformers>=2.7.0
 huggingface-hub>=0.23.0
 
@@ -33,6 +35,7 @@ neo4j>=5.15.0
 # Web Scraping & HTTP
 requests>=2.31.0
 aiohttp>=3.9.0
+httpx>=0.23.0,<0.25.0
 beautifulsoup4>=4.12.0
 markdownify>=0.11.0
 readabilipy>=0.2.0
@@ -44,6 +47,8 @@ tavily-python>=0.3.0
 pydantic>=2.5.0
 pandas>=2.0.0
 numpy>=1.24.0
+dataclasses-json>=0.5.7,<0.6.0
+fastapi>=0.100,<0.101
 
 # Configuration & Environment
 python-dotenv>=1.0.0
