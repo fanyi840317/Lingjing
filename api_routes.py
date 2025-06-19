@@ -8,13 +8,13 @@ from pydantic import BaseModel
 
 # Import project modules
 from config.configuration import Configuration
-from workflow import run_mystery_research
+from workflow import run_mystery_research_workflow
 from tools import (
-    web_search, academic_search, mystery_search,
-    credibility_analysis, correlation_analysis,
-    timeline_analysis, location_analysis,
-    neo4j_storage, elasticsearch_storage,
-    generate_report
+    get_web_search_tool, get_academic_search_tool, get_mystery_search_tool,
+    analyze_information_credibility, analyze_event_correlations,
+    analyze_timeline_patterns, location_analysis,
+    store_in_neo4j, store_in_elasticsearch,
+    generate_mystery_report
 )
 
 # Create API router
