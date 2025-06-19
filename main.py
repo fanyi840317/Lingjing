@@ -349,5 +349,110 @@ def main():
             traceback.print_exc()
 
 
+# FastAPI application setup
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+from api_routes import api_router
+import uvicorn
+import os
+
+# Create FastAPI app
+app = FastAPI(
+    title="Mystery Event Research System",
+    description="AI-powered system for investigating and analyzing mysterious events",
+    version="1.0.0"
+)
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, specify actual origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Include API routes
+app.include_router(api_router)
+
+# Serve static files from the web build directory
+web_build_path = os.path.join(os.path.dirname(__file__), "web", "build")
+if os.path.exists(web_build_path):
+    app.mount("/static", StaticFiles(directory=os.path.join(web_build_path, "static")), name="static")
+    
+    @app.get("/")
+    async def serve_frontend():
+        """Serve the frontend application"""
+        return FileResponse(os.path.join(web_build_path, "index.html"))
+    
+    @app.get("/{path:path}")
+    async def serve_frontend_routes(path: str):
+        """Serve frontend routes (SPA routing)"""
+        file_path = os.path.join(web_build_path, path)
+        if os.path.exists(file_path) and os.path.isfile(file_path):
+            return FileResponse(file_path)
+        else:
+            # Return index.html for SPA routing
+            return FileResponse(os.path.join(web_build_path, "index.html"))
+else:
+    @app.get("/")
+    async def root():
+        return {
+            "message": "Mystery Event Research System API",
+            "status": "running",
+            "docs": "/docs",
+            "note": "Frontend not built. Run 'npm run build' in the web directory."
+        }
+
 if __name__ == "__main__":
-    main()
+    import argparse
+    
+    parser = argparse.ArgumentParser(description="Mystery Event Research System")
+    parser.add_argument("--mode", choices=["server", "research"], default="server",
+                       help="Run mode: server (FastAPI) or research (CLI)")
+    parser.add_argument("--query", type=str, help="Research query for CLI mode")
+    parser.add_argument("--host", type=str, default="127.0.0.1", help="Server host")
+    parser.add_argument("--port", type=int, default=8000, help="Server port")
+    parser.add_argument("--reload", action="store_true", help="Enable auto-reload")
+    
+    args = parser.parse_args()
+    
+    if args.mode == "server":
+        print("Starting Mystery Event Research System Server...")
+        print(f"Server will be available at: http://{args.host}:{args.port}")
+        print(f"API documentation: http://{args.host}:{args.port}/docs")
+        
+        uvicorn.run(
+            "main:app",
+            host=args.host,
+            port=args.port,
+            reload=args.reload
+        )
+    
+    elif args.mode == "research":
+        if not args.query:
+            args.query = "UFO sighting in Phoenix lights 1997"
+        
+        print(f"Starting mystery research for: {args.query}")
+        
+        result = asyncio.run(run_mystery_research_workflow_async(
+            user_input=args.query,
+            debug=True,
+            max_plan_iterations=3,
+            max_step_num=8,
+            enable_background_investigation=True,
+            enable_academic_search=True,
+            enable_credibility_filter=True,
+            enable_correlation_analysis=True,
+            enable_graph_storage=True
+        ))
+        
+        print("\n" + "="*50)
+        print("RESEARCH COMPLETED")
+        print("="*50)
+        print(f"Final result: {result}")
+    
+    else:
+        main()
